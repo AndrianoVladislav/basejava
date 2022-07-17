@@ -4,38 +4,47 @@ import java.util.Arrays;
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    Resume[] storage = new Resume[10000];
-    int counter;
+    Resume[] storage = new Resume[3];
+    int size;
 
     void clear() {
-        Arrays.fill(storage, 0, counter, null);
-        counter = 0;
+        Arrays.fill(storage, 0, size, null);
+        size = 0;
     }
 
     void save(Resume r) {
-        storage[counter] = r;
-        counter++;
+        if (size == 3) {
+            System.out.println("Нет места.");
+        } else {
+            storage[size] = r;
+            size++;
+        }
     }
 
     Resume get(String uuid) {
-        for (int i = 0; i < counter; i++) {
+        for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) {
                 return storage[i];
             }
         }
-        return null;
+        Resume a = new Resume();
+        a.uuid = "Не найден.";
+        return a;
     }
 
     void delete(String uuid) {
-        int number = 0;
-        for (int i = 0; i < counter; i++) {
+        int numberDeleteItem = -1;
+        for (int i = 0; i < size; i++) {
             if (storage[i].uuid.equals(uuid)) {
-                number = i;
+                numberDeleteItem = i;
+                System.arraycopy(storage, numberDeleteItem + 1, storage, numberDeleteItem, size - numberDeleteItem - 1);
+                size--;
+                storage[size] = null;
             }
         }
-        System.arraycopy(storage, number + 1, storage, number, counter - number);
-        counter--;
-        storage[counter] = null;
+        if (numberDeleteItem == -1) {
+            System.out.println("uuid не найден.");
+        }
     }
 
     /**
@@ -46,6 +55,6 @@ public class ArrayStorage {
     }
 
     int size() {
-        return counter;
+        return size;
     }
 }
