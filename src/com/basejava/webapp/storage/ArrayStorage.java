@@ -52,13 +52,13 @@ public class ArrayStorage {
     }
 
     public void delete(String uuid) {
-        int indexForDelete = check(uuid);
-        if (indexForDelete == -1) {
+        int index = check(uuid);
+        if (index == -1) {
             System.out.println("uuid: " + uuid + " не найден.");
         } else {
+            storage[index] = storage[size - 1];
+            storage[size - 1] = null;
             size--;
-            System.arraycopy(storage, indexForDelete + 1, storage, indexForDelete, size - indexForDelete);
-            storage[size] = null;
         }
     }
 
