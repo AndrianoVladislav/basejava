@@ -13,7 +13,7 @@ public class ArrayStorage {
     }
 
     void save(Resume r) {
-        if (size == 10000) {
+        if (size == storage.length) {
             System.out.println("Нет места.");
         } else {
             storage[size] = r;
