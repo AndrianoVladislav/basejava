@@ -30,46 +30,35 @@ public class ArrayStorage {
     }
 
     public void save(Resume r) {
-        boolean q = false;
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid().equals(r.getUuid())) {
-                q = true;
-                break;
+        if (check(r.getUuid()) == -1) {
+            if (size == storage.length) {
+                System.out.println("Нет места.");
+            } else {
+                storage[size] = r;
+                size++;
             }
-        }
-        if (q) {
-            System.out.println("uuid: " + r.getUuid() + " уже существует!");
-        } else if (size == storage.length) {
-            System.out.println("Нет места.");
         } else {
-            storage[size] = r;
-            size++;
+            System.out.println("uuid: " + r.getUuid() + " уже существует!");
         }
-
     }
 
     public Resume get(String uuid) {
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid().equals(uuid)) {
-                return storage[i];
-            }
+        if (check(uuid) == -1) {
+            System.out.println("uuid: " + uuid + " не существует!");
+            return null;
+        } else {
+            return storage[check(uuid)];
         }
-        System.out.println("uuid: " + uuid + " не существует!");
-        return null;
     }
 
     public void delete(String uuid) {
-        int indexForDelete = -1;
-        for (int i = 0; i < size; i++) {
-            if (storage[i].getUuid().equals(uuid)) {
-                indexForDelete = i;
-                size--;
-                System.arraycopy(storage, indexForDelete + 1, storage, indexForDelete, size - indexForDelete);
-                storage[size] = null;
-            }
-        }
+        int indexForDelete = check(uuid);
         if (indexForDelete == -1) {
             System.out.println("uuid: " + uuid + " не найден.");
+        } else {
+            size--;
+            System.arraycopy(storage, indexForDelete + 1, storage, indexForDelete, size - indexForDelete);
+            storage[size] = null;
         }
     }
 
@@ -82,6 +71,15 @@ public class ArrayStorage {
 
     public int size() {
         return size;
+    }
+
+    private int check(String uuid) {
+        for (int i = 0; i < size; i++) {
+            if (storage[i].getUuid().equals(uuid)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
 
