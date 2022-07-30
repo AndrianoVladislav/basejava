@@ -27,7 +27,7 @@ public class ArrayStorage {
     }
 
     public void save(Resume r) {
-        if (size == storage.length) {
+        if (size == STORAGE_LIMIT) {
             System.out.println("Нет места.");
         } else if (findIndex(r.getUuid()) != -1) {
             System.out.println("uuid: " + r.getUuid() + " уже существует!");
