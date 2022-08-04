@@ -7,15 +7,15 @@ import com.basejava.webapp.model.Resume;
  */
 public class ArrayStorage extends AbstractArrayStorage {
 
-    public void save(Resume r) {
-        if (size == STORAGE_LIMIT) {
-            System.out.println("Нет места.");
-        } else if (getIndex(r.getUuid()) >= 0) {
-            System.out.println("uuid: " + r.getUuid() + " уже существует!");
-        } else {
-            storage[size] = r;
-            size++;
-        }
+    @Override
+    public void saveResume(int index, Resume resume) {
+        storage[size] = resume;
+    }
+
+    @Override
+    public void deleteResume(int index) {
+        storage[index] = storage[size];
+        storage[size] = null;
     }
 
     @Override

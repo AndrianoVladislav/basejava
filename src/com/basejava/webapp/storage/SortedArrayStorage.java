@@ -9,20 +9,18 @@ public class SortedArrayStorage extends AbstractArrayStorage {
     private final Resume searchKey = new Resume();
 
     @Override
-    public void save(Resume r) {
-        int index = getIndex(r.getUuid());
-        if (size == STORAGE_LIMIT) {
-            System.out.println("Нет места.");
-        } else if (index >= 0) {
-            System.out.println("uuid: " + r.getUuid() + " уже существует!");
-        } else {
-            index = -index - 1;
-            if (index != size) {
-                System.arraycopy(storage, index, storage, index + 1, size - index);
-            }
-            storage[index] = r;
-            size++;
+    public void saveResume(int index, Resume resume) {
+        index = -index - 1;
+        if (index != size) {
+            System.arraycopy(storage, index, storage, index + 1, size - index);
         }
+        storage[index] = resume;
+    }
+
+    @Override
+    public void deleteResume(int index) {
+        System.arraycopy(storage, index + 1, storage, index, size - index);
+        storage[size] = null;
     }
 
     @Override
