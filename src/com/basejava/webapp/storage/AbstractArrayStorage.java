@@ -1,5 +1,8 @@
 package com.basejava.webapp.storage;
 
+import com.basejava.webapp.exception.ExistStorageException;
+import com.basejava.webapp.exception.NotExistStorageException;
+import com.basejava.webapp.exception.StorageException;
 import com.basejava.webapp.model.Resume;
 
 import java.util.Arrays;
@@ -9,14 +12,14 @@ public abstract class AbstractArrayStorage implements Storage {
     protected Resume[] storage = new Resume[STORAGE_LIMIT];
     protected int size = 0;
 
-    public final void save(Resume r) {
-        int index = getIndex(r.getUuid());
+    public final void save(Resume resume) {
+        int index = getIndex(resume.getUuid());
         if (size == STORAGE_LIMIT) {
-            System.out.println("Нет места.");
+            throw new StorageException("Storage overflow", resume.getUuid());
         } else if (index >= 0) {
-            System.out.println("uuid: " + r.getUuid() + " уже существует!");
+            throw new ExistStorageException(resume.getUuid());
         } else {
-            saveResume(index, r);
+            saveResume(index, resume);
             size++;
         }
     }
@@ -24,17 +27,18 @@ public abstract class AbstractArrayStorage implements Storage {
     public final void delete(String uuid) {
         int index = getIndex(uuid);
         if (index <= -1) {
-            System.out.println("uuid: " + uuid + " не найден.");
+            throw new NotExistStorageException(uuid);
         } else {
             size--;
             deleteResume(index);
+            storage[size] = null;
         }
     }
 
     public final void update(Resume resume) {
         int index = getIndex(resume.getUuid());
         if (index <= -1) {
-            System.out.println("uuid: " + resume.getUuid() + " не существует!");
+            throw new NotExistStorageException(resume.getUuid());
         } else {
             storage[index] = resume;
         }
@@ -56,8 +60,7 @@ public abstract class AbstractArrayStorage implements Storage {
     public final Resume get(String uuid) {
         int index = getIndex(uuid);
         if (index <= -1) {
-            System.out.println("uuid: " + uuid + " не существует!");
-            return null;
+            throw new NotExistStorageException(uuid);
         }
         return storage[index];
     }
