@@ -3,27 +3,11 @@ package com.basejava.webapp.storage;
 import com.basejava.webapp.model.Resume;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListStorage extends AbstractStorage {
 
-    protected ArrayList<Resume> storage = new ArrayList<>();
-    private Resume newResume;
-
-    @Override
-    protected final void resumeSave(Resume resume) {
-        storage.add(resume);
-    }
-
-    @Override
-    protected final void resumeDelete(String uuid) {
-        newResume = new Resume(uuid);
-        storage.remove(newResume);
-    }
-
-    @Override
-    protected final void resumeUpdate(Resume resume) {
-        storage.set(storage.indexOf(resume), resume);
-    }
+    protected List<Resume> storage = new ArrayList<>();
 
     @Override
     public final void clear() {
@@ -41,19 +25,37 @@ public class ListStorage extends AbstractStorage {
     }
 
     @Override
-    protected final Resume resumeGet(String uuid) {
-        newResume = new Resume(uuid);
-        return storage.get(storage.indexOf(newResume));
+    protected final void doSave(Object searchKey, Resume resume) {
+        storage.add(resume);
     }
 
     @Override
-    protected boolean resumeExist(Resume resume) {
-        return storage.contains(resume);
+    protected final void doDelete(Object searchKey) {
+        storage.remove((Integer) searchKey);
     }
 
     @Override
-    protected boolean resumeNotExist(String uuid) {
-        Resume newResume = new Resume(uuid);
-        return !storage.contains(newResume);
+    protected final void doUpdate(Object searchKey, Resume resume) {
+        storage.set((Integer) searchKey, resume);
+    }
+
+    @Override
+    protected final Resume doGet(Object searchKey) {
+        return storage.get((Integer) searchKey);
+    }
+
+    @Override
+    protected boolean isExist(Object getSearchKey) {
+        return getSearchKey != null;
+    }
+
+    @Override
+    protected Object getSearchKey(String uuid) {
+        for (int i = 0; i < storage.size(); i++) {
+            if (storage.get(i).getUuid().equals(uuid)) {
+                return i;
+            }
+        }
+        return null;
     }
 }
