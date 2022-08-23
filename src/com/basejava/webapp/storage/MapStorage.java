@@ -8,7 +8,6 @@ import java.util.Map;
 public class MapStorage extends AbstractStorage {
 
     protected Map<String, Resume> storage = new HashMap<>();
-    private static String temporaryStorage;
 
     @Override
     public void clear() {
@@ -27,7 +26,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void doSave(Object searchKey, Resume resume) {
-        storage.put(temporaryStorage, resume);
+        storage.put((String) searchKey, resume);
     }
 
     @Override
@@ -37,7 +36,7 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected void doUpdate(Object searchKey, Resume resume) {
-        storage.put(temporaryStorage, resume);
+        storage.put((String) searchKey, resume);
     }
 
     @Override
@@ -47,17 +46,11 @@ public class MapStorage extends AbstractStorage {
 
     @Override
     protected boolean isExist(Object searchKey) {
-        return searchKey != null;
+        return storage.containsKey((String) searchKey);
     }
 
     @Override
     protected Object getSearchKey(String uuid) {
-        temporaryStorage = uuid;
-        for (Map.Entry<String, Resume> entry : storage.entrySet()) {
-            if (entry.getKey().equals(uuid)) {
-                return entry.getKey();
-            }
-        }
-        return null;
+        return uuid;
     }
 }
