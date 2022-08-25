@@ -6,6 +6,18 @@ import com.basejava.webapp.model.Resume;
 
 public abstract class AbstractStorage implements Storage {
 
+    protected abstract boolean isExist(Object searchKey);
+
+    protected abstract void doSave(Object searchKey, Resume resume);
+
+    protected abstract void doDelete(Object searchKey);
+
+    protected abstract void doUpdate(Object searchKey, Resume resume);
+
+    protected abstract Resume doGet(Object searchKey);
+
+    protected abstract Object getSearchKey(String uuid);
+
     public final void save(Resume resume) {
         doSave(getExistingSearchKey(resume.getUuid()), resume);
     }
@@ -37,16 +49,4 @@ public abstract class AbstractStorage implements Storage {
         }
         return searchKey;
     }
-
-    protected abstract boolean isExist(Object searchKey);
-
-    protected abstract void doSave(Object searchKey, Resume resume);
-
-    protected abstract void doDelete(Object searchKey);
-
-    protected abstract void doUpdate(Object searchKey, Resume resume);
-
-    protected abstract Resume doGet(Object searchKey);
-
-    protected abstract Object getSearchKey(String uuid);
 }
