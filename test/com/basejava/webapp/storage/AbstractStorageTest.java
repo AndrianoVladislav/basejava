@@ -42,7 +42,6 @@ public abstract class AbstractStorageTest {
         storage.save(RESUME_3);
     }
 
-
     @Test
     void save() {
         storage.save(RESUME_4);

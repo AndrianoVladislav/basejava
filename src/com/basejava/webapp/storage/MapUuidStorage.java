@@ -2,6 +2,7 @@ package com.basejava.webapp.storage;
 
 import com.basejava.webapp.model.Resume;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class MapUuidStorage extends AbstractStorage {
 
     @Override
     public List<Resume> doGetAllSorted() {
-        return storage.values().stream().toList();
+        return new ArrayList<>(storage.values());
     }
 
     @Override
