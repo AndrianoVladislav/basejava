@@ -2,14 +2,14 @@ package com.basejava.webapp.model;
 
 import java.util.Objects;
 
-public class Classified {
+public class Organization {
     private final String startDate;
     private final String endDate;
     private final String mainTitle;
     private final String secondTitle;
     private final String text;
 
-    public Classified(String startDate, String endDate, String mainTitle, String secondTitle, String text) {
+    public Organization(String startDate, String endDate, String mainTitle, String secondTitle, String text) {
         Objects.requireNonNull(startDate, "startDate mustn't be null");
         Objects.requireNonNull(endDate, "endDate mustn't be null");
         Objects.requireNonNull(mainTitle, "mainTitle mustn't be null");
@@ -26,7 +26,7 @@ public class Classified {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Classified that = (Classified) o;
+        Organization that = (Organization) o;
 
         if (!startDate.equals(that.startDate)) return false;
         if (!endDate.equals(that.endDate)) return false;
