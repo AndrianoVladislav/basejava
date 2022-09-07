@@ -1,24 +1,17 @@
 package com.basejava.webapp.model;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Organization {
-    private final String startDate;
-    private final String endDate;
     private final String mainTitle;
-    private final String secondTitle;
-    private final String text;
+    private final List<OrganizationPeriod> periods;
 
-    public Organization(String startDate, String endDate, String mainTitle, String secondTitle, String text) {
-        Objects.requireNonNull(startDate, "startDate mustn't be null");
-        Objects.requireNonNull(endDate, "endDate mustn't be null");
+    public Organization(String mainTitle, List<OrganizationPeriod> periods) {
         Objects.requireNonNull(mainTitle, "mainTitle mustn't be null");
-        Objects.requireNonNull(secondTitle, "secondTitle mustn't be null");
-        this.startDate = startDate;
-        this.endDate = endDate;
+        Objects.requireNonNull(periods, "periods mustn't be null");
         this.mainTitle = mainTitle;
-        this.secondTitle = secondTitle;
-        this.text = text;
+        this.periods = periods;
     }
 
     @Override
@@ -28,39 +21,22 @@ public class Organization {
 
         Organization that = (Organization) o;
 
-        if (!startDate.equals(that.startDate)) return false;
-        if (!endDate.equals(that.endDate)) return false;
         if (!mainTitle.equals(that.mainTitle)) return false;
-        if (!secondTitle.equals(that.secondTitle)) return false;
-        return Objects.equals(text, that.text);
+        return periods.equals(that.periods);
     }
 
     @Override
     public int hashCode() {
-        int result = startDate.hashCode();
-        result = 31 * result + endDate.hashCode();
-        result = 31 * result + mainTitle.hashCode();
-        result = 31 * result + secondTitle.hashCode();
-        result = 31 * result + (text != null ? text.hashCode() : 0);
+        int result = mainTitle.hashCode();
+        result = 31 * result + periods.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        if (text == null) {
-            return "Classified{" +
-                    "startDate=" + startDate +
-                    ", endDate=" + endDate +
-                    ", mainTitle='" + mainTitle + '\'' +
-                    ", secondTitle='" + secondTitle + '\'' +
-                    '}';
-        }
-        return "Classified{" +
-                "startDate=" + startDate +
-                ", endDate=" + endDate +
-                ", mainTitle='" + mainTitle + '\'' +
-                ", secondTitle='" + secondTitle + '\'' +
-                ", text='" + text + '\'' +
+        return "Organization{" +
+                "mainTitle='" + mainTitle + '\'' +
+                ", periods=" + periods +
                 '}';
     }
 }

@@ -33,8 +33,8 @@ public class SectionList extends Section {
 
     @Override
     public String toString() {
-        return "SectionWithList{" +
+        return "SectionList{" +
                 "list=" + list +
-                "}";
+                '}';
     }
 }

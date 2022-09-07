@@ -87,49 +87,60 @@ public class ResumeTestData {
         r.getSection().put(qualifications, qualificationsList);
 
         SectionType experience = SectionType.EXPERIENCE;
-        List<Organization> list2 = new ArrayList<>();
-        Organization organization = new Organization("09/1997", "01/2005", "Alcatel", "Инженер по аппаратному и программному тестированию", "Тестирование, отладка, внедрение ПО цифровой телефонной станции Alcatel 1000 S12 (CHILL, ASM).");
-        list2.add(organization);
-        organization = new Organization("01/2005", "02/2007", "Siemens AG", "Разработчик ПО", "Разработка информационной модели, проектирование интерфейсов, реализация и отладка ПО на мобильной IN платформе Siemens @vantage (Java, Unix).");
-        list2.add(organization);
-        organization = new Organization("03/2007", "06/2008", "Enkata", "Разработчик ПО", "Реализация клиентской (Eclipse RCP) и серверной (JBoss 4.2, Hibernate 3.0, Tomcat, JMS) частей кластерного J2EE приложения (OLAP, Data mining).");
-        list2.add(organization);
-        organization = new Organization("06/2008", "12/2010", "Yota", "Ведущий специалист", "Дизайн и имплементация Java EE фреймворка для отдела \"Платежные Системы\" (GlassFish v2.1, v3, OC4J, EJB3, JAX-WS RI 2.1, Servlet 2.4, JSP, JMX, JMS, Maven2). Реализация администрирования, статистики и мониторинга фреймворка. Разработка online JMX клиента (Python/ Jython, Django, ExtJS)");
-        list2.add(organization);
-        organization = new Organization("12/2010", "04/2012", "Luxoft (Deutsche Bank)", "Ведущий программист", "Участие в проекте Deutsche Bank CRM (WebLogic, Hibernate, Spring, Spring MVC, SmartGWT, GWT, Jasper, Oracle). Реализация клиентской и серверной части CRM. Реализация RIA-приложения для администрирования, мониторинга и анализа результатов в области алгоритмического трейдинга. JPA, Spring, Spring-MVC, GWT, ExtGWT (GXT), Highstock, Commet, HTML5.");
-        list2.add(organization);
-        organization = new Organization("04/2012", "10/2014", "RIT Center", "Java архитектор", "Организация процесса разработки системы ERP для разных окружений: релизная политика, версионирование, ведение CI (Jenkins), миграция базы (кастомизация Flyway), конфигурирование системы (pgBoucer, Nginx), AAA via SSO. Архитектура БД и серверной части системы. Разработка интергационных сервисов: CMIS, BPMN2, 1C (WebServices), сервисов общего назначения (почта, экспорт в pdf, doc, html). Интеграция Alfresco JLAN для online редактирование из браузера документов MS Office. Maven + plugin development, Ant, Apache Commons, Spring security, Spring MVC, Tomcat,WSO2, xcmis, OpenCmis, Bonita, Python scripting, Unix shell remote scripting via ssh tunnels, PL/Python");
-        list2.add(organization);
-        organization = new Organization("10/2014", "01/2016", "Wrike", "Старший разработчик (backend)", "Проектирование и разработка онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, MyBatis, Guava, Vaadin, PostgreSQL, Redis). Двухфакторная аутентификация, авторизация по OAuth1, OAuth2, JWT SSO.");
-        list2.add(organization);
-        organization = new Organization("10/2013", "Сейчас", "Java Online Projects", "Автор проекта.", "Создание, организация и проведение Java онлайн проектов и стажировок.");
-        list2.add(organization);
-        OrganizationSection experienceList = new OrganizationSection(list2);
+        List<Organization> listOrganization = new ArrayList<>();
+        Organization organization = doOrganization("09/1997", "01/2005", "Alcatel", "Инженер по аппаратному и программному тестированию", "Тестирование, отладка, внедрение ПО цифровой телефонной станции Alcatel 1000 S12 (CHILL, ASM).");
+        listOrganization.add(organization);
+        organization = doOrganization("01/2005", "02/2007", "Siemens AG", "Разработчик ПО", "Разработка информационной модели, проектирование интерфейсов, реализация и отладка ПО на мобильной IN платформе Siemens @vantage (Java, Unix).");
+        listOrganization.add(organization);
+        organization = doOrganization("03/2007", "06/2008", "Enkata", "Разработчик ПО", "Реализация клиентской (Eclipse RCP) и серверной (JBoss 4.2, Hibernate 3.0, Tomcat, JMS) частей кластерного J2EE приложения (OLAP, Data mining).");
+        listOrganization.add(organization);
+        organization = doOrganization("06/2008", "12/2010", "Yota", "Ведущий специалист", "Дизайн и имплементация Java EE фреймворка для отдела \"Платежные Системы\" (GlassFish v2.1, v3, OC4J, EJB3, JAX-WS RI 2.1, Servlet 2.4, JSP, JMX, JMS, Maven2). Реализация администрирования, статистики и мониторинга фреймворка. Разработка online JMX клиента (Python/ Jython, Django, ExtJS)");
+        listOrganization.add(organization);
+        organization = doOrganization("12/2010", "04/2012", "Luxoft (Deutsche Bank)", "Ведущий программист", "Участие в проекте Deutsche Bank CRM (WebLogic, Hibernate, Spring, Spring MVC, SmartGWT, GWT, Jasper, Oracle). Реализация клиентской и серверной части CRM. Реализация RIA-приложения для администрирования, мониторинга и анализа результатов в области алгоритмического трейдинга. JPA, Spring, Spring-MVC, GWT, ExtGWT (GXT), Highstock, Commet, HTML5.");
+        listOrganization.add(organization);
+        organization = doOrganization("04/2012", "10/2014", "RIT Center", "Java архитектор", "Организация процесса разработки системы ERP для разных окружений: релизная политика, версионирование, ведение CI (Jenkins), миграция базы (кастомизация Flyway), конфигурирование системы (pgBoucer, Nginx), AAA via SSO. Архитектура БД и серверной части системы. Разработка интергационных сервисов: CMIS, BPMN2, 1C (WebServices), сервисов общего назначения (почта, экспорт в pdf, doc, html). Интеграция Alfresco JLAN для online редактирование из браузера документов MS Office. Maven + plugin development, Ant, Apache Commons, Spring security, Spring MVC, Tomcat,WSO2, xcmis, OpenCmis, Bonita, Python scripting, Unix shell remote scripting via ssh tunnels, PL/Python");
+        listOrganization.add(organization);
+        organization = doOrganization("10/2014", "01/2016", "Wrike", "Старший разработчик (backend)", "Проектирование и разработка онлайн платформы управления проектами Wrike (Java 8 API, Maven, Spring, MyBatis, Guava, Vaadin, PostgreSQL, Redis). Двухфакторная аутентификация, авторизация по OAuth1, OAuth2, JWT SSO.");
+        listOrganization.add(organization);
+        organization = doOrganization("10/2013", "Сейчас", "Java Online Projects", "Автор проекта.", "Создание, организация и проведение Java онлайн проектов и стажировок.");
+        listOrganization.add(organization);
+        OrganizationSection experienceList = new OrganizationSection(listOrganization);
         r.getSection().put(experience, experienceList);
 
         SectionType education = SectionType.EDUCATION;
-        list2.clear();
-        organization = new Organization("09/1984", "06/1987", "Заочная физико-техническая школа при МФТИ", "Закончил с отличием", null);
-        list2.add(organization);
-        organization = new Organization("09/1987", "07/1993", "Санкт-Петербургский национальный исследовательский университет информационных технологий, механики и оптики", "Инженер (программист Fortran, C)", null);
-        list2.add(organization);
-        organization = new Organization("09/1993", "07/1996", "Санкт-Петербургский национальный исследовательский университет информационных технологий, механики и оптики", "Аспирантура (программист С, С++)", null);
-        list2.add(organization);
-        organization = new Organization("09/1997", "03/1998", "Alcatel", "6 месяцев обучения цифровым телефонным сетям (Москва)", null);
-        list2.add(organization);
-        organization = new Organization("01/2005", "04/2005", "Siemens AG", "3 месяца обучения мобильным IN сетям (Берлин)", null);
-        list2.add(organization);
-        organization = new Organization("03/2011", "04/2011", "Luxoft", "Курс 'Объектно-ориентированный анализ ИС. Концептуальное моделирование на UML.'", null);
-        list2.add(organization);
-        organization = new Organization("03/2013", "05/2013", "Coursera", "'Functional Programming Principles in Scala' by Martin Odersky", null);
-        list2.add(organization);
-        OrganizationSection educationList = new OrganizationSection(list2);
+        List<Organization> listOrganization2 = new ArrayList<>();
+        organization = doOrganization("09/1984", "06/1987", "Заочная физико-техническая школа при МФТИ", "Закончил с отличием", null);
+        listOrganization2.add(organization);
+        List<OrganizationPeriod> listOrganizationPeriod = new ArrayList<>();
+        OrganizationPeriod organizationPeriod = new OrganizationPeriod("09/1987", "07/1993", "Инженер (программист Fortran, C)", null);
+        listOrganizationPeriod.add(organizationPeriod);
+        organizationPeriod = new OrganizationPeriod("09/1993", "07/1996", "Аспирантура (программист С, С++)", null);
+        listOrganizationPeriod.add(organizationPeriod);
+        organization = new Organization("Санкт-Петербургский национальный исследовательский университет информационных технологий, механики и оптики", listOrganizationPeriod);
+        listOrganizationPeriod.clear();
+        listOrganization2.add(organization);
+        organization = doOrganization("09/1997", "03/1998", "Alcatel", "6 месяцев обучения цифровым телефонным сетям (Москва)", null);
+        listOrganization2.add(organization);
+        organization = doOrganization("01/2005", "04/2005", "Siemens AG", "3 месяца обучения мобильным IN сетям (Берлин)", null);
+        listOrganization2.add(organization);
+        organization = doOrganization("03/2011", "04/2011", "Luxoft", "Курс 'Объектно-ориентированный анализ ИС. Концептуальное моделирование на UML.'", null);
+        listOrganization2.add(organization);
+        organization = doOrganization("03/2013", "05/2013", "Coursera", "'Functional Programming Principles in Scala' by Martin Odersky", null);
+        listOrganization2.add(organization);
+        OrganizationSection educationList = new OrganizationSection(listOrganization2);
         r.getSection().put(education, educationList);
 
         for (Section type : r.getSection().values()) {
             System.out.println();
             System.out.println(type.toString());
         }
+    }
+
+    private static Organization doOrganization(String startDate, String endDate, String mainTitle, String secondTitle, String text) {
+        List<OrganizationPeriod> listOrganizationPeriod = new ArrayList<>();
+        OrganizationPeriod organizationPeriod = new OrganizationPeriod(startDate, endDate, secondTitle, text);
+        listOrganizationPeriod.add(organizationPeriod);
+        return new Organization(mainTitle, listOrganizationPeriod);
     }
 }
 

@@ -11,10 +11,6 @@ public class OrganizationSection extends Section {
         this.organizations = organizations;
     }
 
-    public List<Organization> getClassifieds() {
-        return organizations;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -32,8 +28,8 @@ public class OrganizationSection extends Section {
 
     @Override
     public String toString() {
-        return "SectionClassified{" +
-                "classifieds=" + organizations +
+        return "OrganizationSection{" +
+                "organizations=" + organizations +
                 '}';
     }
 }
