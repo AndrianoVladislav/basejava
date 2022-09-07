@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class Organization {
-    private final String mainTitle;
-    private final List<OrganizationPeriod> periods;
+    private final String name;
+    private final List<Period> periods;
 
-    public Organization(String mainTitle, List<OrganizationPeriod> periods) {
-        Objects.requireNonNull(mainTitle, "mainTitle mustn't be null");
+    public Organization(String name, List<Period> periods) {
+        Objects.requireNonNull(name, "name mustn't be null");
         Objects.requireNonNull(periods, "periods mustn't be null");
-        this.mainTitle = mainTitle;
+        this.name = name;
         this.periods = periods;
     }
 
@@ -21,13 +21,13 @@ public class Organization {
 
         Organization that = (Organization) o;
 
-        if (!mainTitle.equals(that.mainTitle)) return false;
+        if (!name.equals(that.name)) return false;
         return periods.equals(that.periods);
     }
 
     @Override
     public int hashCode() {
-        int result = mainTitle.hashCode();
+        int result = name.hashCode();
         result = 31 * result + periods.hashCode();
         return result;
     }
@@ -35,7 +35,7 @@ public class Organization {
     @Override
     public String toString() {
         return "Organization{" +
-                "mainTitle='" + mainTitle + '\'' +
+                "name='" + name + '\'' +
                 ", periods=" + periods +
                 '}';
     }
