@@ -3,7 +3,6 @@ package com.basejava.webapp.model;
 import java.util.Objects;
 
 public class Period {
-
     private final String startDate;
     private final String endDate;
     private final String title;
@@ -17,6 +16,22 @@ public class Period {
         this.endDate = endDate;
         this.title = title;
         this.description = description;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     @Override

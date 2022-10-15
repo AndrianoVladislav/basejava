@@ -10,7 +10,7 @@ public class Resume {
     private final String uuid;
     private final String fullName;
 
-    private final Map<SectionType, Section> section = new HashMap<>();
+    private final Map<SectionType, AbstractSection> section = new HashMap<>();
     private final Map<ContactType, String> contact = new HashMap<>();
 
     public Resume(String fullName) {
@@ -55,7 +55,7 @@ public class Resume {
         return fullName;
     }
 
-    public Map<SectionType, Section> getSection() {
+    public Map<SectionType, AbstractSection> getSection() {
         return section;
     }
 

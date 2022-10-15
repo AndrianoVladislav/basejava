@@ -27,11 +27,11 @@ public class ResumeTestData {
         }
 
         SectionType personal = SectionType.PERSONAL;
-        SectionText personalText = new SectionText("Аналитический склад ума, сильная логика, креативность, инициативность. Пурист кода и архитектуры.");
+        TextSection personalText = new TextSection("Аналитический склад ума, сильная логика, креативность, инициативность. Пурист кода и архитектуры.");
         r.getSection().put(personal, personalText);
 
         SectionType objective = SectionType.OBJECTIVE;
-        SectionText objectiveText = new SectionText("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям.");
+        TextSection objectiveText = new TextSection("Ведущий стажировок и корпоративного обучения по Java Web и Enterprise технологиям.");
         r.getSection().put(objective, objectiveText);
 
         SectionType achievement = SectionType.ACHIEVEMENT;
@@ -43,7 +43,7 @@ public class ResumeTestData {
         doSection(list, "\nРеализация c нуля Rich Internet Application приложения на стеке технологий JPA, Spring, Spring-MVC, GWT, ExtGWT (GXT), Commet, HTML5, Highstock для алгоритмического трейдинга.");
         doSection(list, "\nСоздание JavaEE фреймворка для отказоустойчивого взаимодействия слабо-связанных сервисов (SOA-base архитектура, JAX-WS, JMS, AS Glassfish). Сбор статистики сервисов и информации о состоянии через систему мониторинга Nagios. Реализация онлайн клиента для администрирования и мониторинга системы по JMX (Jython/ Django).");
         doSection(list, "\nРеализация протоколов по приему платежей всех основных платежных системы России (Cyberplat, Eport, Chronopay, Сбербанк), Белоруcсии(Erip, Osmp) и Никарагуа.");
-        SectionList achievementList = new SectionList(list);
+        ListSection achievementList = new ListSection(list);
         r.getSection().put(achievement, achievementList);
 
         SectionType qualifications = SectionType.QUALIFICATIONS;
@@ -62,7 +62,7 @@ public class ResumeTestData {
         doSection(list2, "\nАдминистрирование Hudson/Jenkins, Ant + custom task, SoapUI, JPublisher, Flyway, Nagios, iReport, OpenCmis, Bonita, pgBouncer");
         doSection(list2, "\nОтличное знание и опыт применения концепций ООП, SOA, шаблонов проектрирования, архитектурных шаблонов, UML, функционального программирования");
         doSection(list2, "\nРодной русский, английский \"upper intermediate\"");
-        SectionList qualificationsList = new SectionList(list2);
+        ListSection qualificationsList = new ListSection(list2);
         r.getSection().put(qualifications, qualificationsList);
 
         SectionType experience = SectionType.EXPERIENCE;
@@ -95,7 +95,7 @@ public class ResumeTestData {
         OrganizationSection educationList = new OrganizationSection(listOrganization2);
         r.getSection().put(education, educationList);
 
-        for (Section type : r.getSection().values()) {
+        for (AbstractSection type : r.getSection().values()) {
             System.out.println();
             System.out.println(type.toString());
         }
